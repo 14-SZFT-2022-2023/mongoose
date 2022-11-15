@@ -3,15 +3,12 @@ const mongoose = require('mongoose');
 const buyingSchema = new mongoose.Schema(
   {
     id: Number,
-    nev: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    cim: {
-      type: String,
-      required: true,
-    },
+    items: [
+      {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Item',
+      },
+    ],
     buyer: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'Buyer',
