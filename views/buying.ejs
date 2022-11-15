@@ -3,7 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/stilus.css" />
     <title>Vásárlás</title>
   </head>
-  <body></body>
+  <body>
+    <a href="/">Home</a>
+    <form action="/buying" method="post">
+      <table>
+        <% items.forEach(item => { %>
+        <tr>
+          <td><%= item.nev %></td>
+          <td><%= item.ar %></td>
+          <td><input type="checkbox" name="<%= item.nev %> " /></td>
+        </tr>
+        <% }) %>
+        <tr>
+          <td><button type="submit">Elküld</button></td>
+        </tr>
+      </table>
+    </form>
+  </body>
 </html>

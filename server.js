@@ -47,7 +47,32 @@ app.get('/buyers', async (req, res) => {
 });
 
 app.get('/buying', async (req, res) => {
-  res.render('buying');
+  const buyers = await Buyer.find();
+  const items = await Item.find();
+  res.render('buying', { buyers, items });
+});
+
+app.post('/buying', async (req, res) => {
+  const props = Object.keys(req.body);
+  const newBuying = new Buying({ id: 1 });
+  const arutomb = [];
+
+  for (let i = 0; i < props.length; i++) {
+    const termek = await Item.findOne({ nev: props[i].trim() });
+    console.log(termek);
+    arutomb.push(termek._id);
+  }
+
+  newBuying.items = arutomb;
+  await newBuying.save();
+  console.log(newBuying);
+
+  res.redirect('/buyings');
+});
+
+app.get('/buyings', async (req, res) => {
+  const buyings = await Buying.find();
+  res.render('buyings', { buyings });
 });
 
 app.get('/item', (req, res) => {
