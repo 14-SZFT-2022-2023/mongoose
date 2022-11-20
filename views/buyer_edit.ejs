@@ -1,15 +1,15 @@
 <%- include('./layouts/header_1') %> 
 
-<%- include('./layouts/nav') %> 
+<%- include('./layouts/nav_edit') %>
 
-        <form action="/buyer" method="post" autocomplete="off">
+		<form action="/buyer/modosit/<%= buyer._id %> " method="post" autocomplete="off">
             <table>
                 <tr>
                     <td>
                         <label for="nev">Név:</label>
                     </td>
                     <td>
-                        <input type="text" name="nev" id="nev" autofocus />
+                        <input type="text" name="nev" id="nev" value="<%= buyer.nev %>" autofocus />
                     </td>
                 </tr>
                 <tr>
@@ -17,7 +17,7 @@
                         <label for="varos">Város:</label>
                     </td>
                     <td>
-                        <input type="text" name="varos" id="varos" />
+                        <input type="text" name="varos" id="varos" value="<%= buyer.cim.varos %>" />
                     </td>
                 </tr>
                 <tr>
@@ -25,7 +25,7 @@
                         <label for="utca">Utca:</label>
                     </td>
                     <td>
-                        <input type="text" name="utca" id="utca" />
+                        <input type="text" name="utca" id="utca" value="<%= buyer.cim.utca %>" />
                     </td>
                 </tr>
                 <tr>
@@ -33,7 +33,7 @@
                         <label for="hazszam">Házszám:</label>
                     </td>
                     <td>
-                        <input type="text" name="hazszam" id="hazszam" />
+                        <input type="text" name="hazszam" id="hazszam" value="<%= buyer.cim.hazszam %>" />
                     </td>
                 </tr>
                 <tr>
@@ -45,7 +45,14 @@
                             type="text"
                             name="iranyitoszam"
                             id="iranyitoszam"
+                            value="<%= buyer.cim.iranyitoszam %>"
                         />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Admin-e:</td>
+                    <td>
+                        <input type="checkbox" name="admin" <%= buyer.isAdmin ? checked="checked" : ""  %> />
                     </td>
                 </tr>
                 <tr>

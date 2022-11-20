@@ -1,0 +1,20 @@
+<%- include('./layouts/header_2') %> 
+
+<%- include('./layouts/nav') %> 
+
+        <table>
+            <tr>
+                <th>Egység neve</th>
+                <th>Törlés</th>
+                <th>Módosítás</th>
+            </tr>
+            <% units.forEach(unit => { %>
+            <tr>
+                <td><%= unit.nev %></td>
+                <td><a href="/unit/torol/<%= unit._id %>">Töröl</a></td>
+                <td><a href="/unit/modosit/<%= unit._id %>">Módosít</a></td>
+            </tr>
+            <% }) %>
+        </table>
+    </body>
+</html>

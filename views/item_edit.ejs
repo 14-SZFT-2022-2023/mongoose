@@ -1,15 +1,15 @@
 <%- include('./layouts/header_1') %> 
 
-<%- include('./layouts/nav') %> 
+<%- include('./layouts/nav_edit') %>
 
-        <form action="/item" method="post" autocomplete="off">
+		<form action="/item/modosit/<%= item._id  %> " method="post" autocomplete="off">
             <table>
                 <tr>
                     <td>
                         <label for="nev">Név:</label>
                     </td>
                     <td>
-                        <input type="text" name="nev" id="nev" autofocus />
+                        <input type="text" name="nev" id="nev" value="<%= item.nev %>" autofocus />
                     </td>
                 </tr>
                 <tr>
@@ -18,11 +18,13 @@
                     </td>
                     <td>
                         <select name="kategoria" id="kategoria">
-                            <option></option>
+                            <option><%= item.kategoria %></option>
                             <% categories.forEach(category => { %>
-                            <option value="<%= category.nev %> ">
-                                <%= category.nev %>
-                            </option>
+                                <% if (category.nev != item.kategoria) { %>
+                                    <option value="<%= category.nev %>">
+                                        <%= category.nev %>
+                                    </option>
+                                <% } %>
                             <% }) %>
                         </select>
                     </td>
@@ -33,11 +35,13 @@
                     </td>
                     <td>
                         <select name="egyseg" id="egyseg">
-                            <option></option>
+                            <option><%= item.egyseg %></option>
                             <% units.forEach(unit => { %>
-                            <option value="<%= unit.nev %> ">
-                                <%= unit.nev %>
-                            </option>
+                                <% if (unit.nev != item.egyseg) { %>
+                                    <option value="<%= unit.nev %>">
+                                        <%= unit.nev %>
+                                    </option>
+                                <% } %>
                             <% }) %>
                         </select>
                     </td>
@@ -47,7 +51,7 @@
                         <label for="ar">Egységár:</label>
                     </td>
                     <td>
-                        <input type="number" name="ar" id="ar" />
+                        <input type="number" name="ar" id="ar" value="<%= item.ar %>" />
                     </td>
                 </tr>
                 <tr>

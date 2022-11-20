@@ -22,27 +22,45 @@ app.set('view engine', 'ejs');
 
 // Statikus mappák a különböző route-okhoz
 app.use('/', express.static(path.join(__dirname, 'public')));
+app.use('/registry', express.static(path.join(__dirname, 'public')));
+app.use('/login', express.static(path.join(__dirname, 'public')));
 app.use('/buyer', express.static(path.join(__dirname, 'public')));
+app.use('/buyer/modosit', express.static(path.join(__dirname, 'public')));
 app.use('/buyers', express.static(path.join(__dirname, 'public')));
 app.use('/category', express.static(path.join(__dirname, 'public')));
+app.use('/category/modosit', express.static(path.join(__dirname, 'public')));
 app.use('/categories', express.static(path.join(__dirname, 'public')));
 app.use('/item', express.static(path.join(__dirname, 'public')));
+app.use('/item/modosit', express.static(path.join(__dirname, 'public')));
 app.use('/items', express.static(path.join(__dirname, 'public')));
+app.use('/unit', express.static(path.join(__dirname, 'public')));
+app.use('/unit/modosit', express.static(path.join(__dirname, 'public')));
+app.use('/units', express.static(path.join(__dirname, 'public')));
 
 // Adatbázis csatlakozás
-mongoose.connect(process.env.MONGO_URI, (err) => {
-    if (err) return console.log(err);
-    console.log('Csatlakoztunk!');
+mongoose.connect(process.env.MONGO_URI, (error) => {
+    try {
+        console.log('Csatlakoztunk!');
+        app.listen(PORT, () => {
+            console.log(`http://localhost:${PORT}`);
+        });
+    } catch (error) {
+        console.log(error.message);
+    }
 });
 
 // Routes
 app.use('/', require('./routes/rootRoutes'));
+app.use('/registry', require('./routes/registryRoutes'));
+app.use('/login', require('./routes/loginRoutes'));
 app.use('/buyer', require('./routes/buyerRoutes'));
 app.use('/buyers', require('./routes/buyersRoutes'));
 app.use('/category', require('./routes/categoryRoutes'));
 app.use('/categories', require('./routes/categoriesRoutes'));
 app.use('/item', require('./routes/itemRoutes'));
 app.use('/items', require('./routes/itemsRoutes'));
+app.use('/unit', require('./routes/unitRoutes'));
+app.use('/units', require('./routes/unitsRoutes'));
 
 app.get('/buying', async (req, res) => {
     const buyers = await Buyer.find();
@@ -91,8 +109,4 @@ app.get('/items', async (req, res) => {
     } catch (error) {
         console.log(error.message);
     }
-});
-
-app.listen(PORT, () => {
-    console.log(`http://localhost:${PORT}`);
 });

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const ItemSchema = new mongoose.Schema(
+const itemSchema = new mongoose.Schema(
     {
         nev: {
             type: String,
@@ -24,4 +24,4 @@ const ItemSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-module.exports = mongoose.model('Item', ItemSchema);
+module.exports = mongoose.model('Item', itemSchema);

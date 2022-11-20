@@ -1,15 +1,15 @@
 <%- include('./layouts/header_1') %> 
 
-<%- include('./layouts/nav') %> 
+<%- include('./layouts/nav_edit') %>
 
-        <form action="/category" method="post" autocomplete="off">
+		<form action="/category/modosit/<%= category._id %> " method="post" autocomplete="off">
             <table>
                 <tr>
                     <td>
                         <label for="nev">Név:</label>
                     </td>
                     <td>
-                        <input type="text" name="nev" id="nev" autofocus />
+                        <input type="text" name="nev" id="nev" value="<%= category.nev %>" autofocus />
                     </td>
                 </tr>
                 <tr>

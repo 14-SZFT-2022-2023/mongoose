@@ -1,0 +1,37 @@
+<%- include('./layouts/header_2') %> 
+
+<%- include('./layouts/nav_index') %>
+        
+        <table style="width: 30%;">
+            <form action="/login" method="post" autocomplete="off">
+                <tr>
+                    <td>
+                        <label for="email">E-mail: </label>
+                    </td>
+                    <td>
+                        <input type="email" name="email" id="email" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td id="email-error"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="jelszo">Jelszó:</label>
+                    </td>
+                    <td>
+                        <input type="password" name="jelszo" id="jelszo" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td id="jelszo-error"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit">Elküld</button>
+                    </td>
+                </tr>
+            </form>
+        </table>
+    </body>
+</html>

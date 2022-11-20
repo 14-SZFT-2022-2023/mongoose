@@ -1,5 +1,6 @@
 const getRootRoute = (req, res) => {
-    res.render('index');
+    const active = [true, false, false];
+    res.render('index', { active: active });
 };
 
 module.exports = { getRootRoute };

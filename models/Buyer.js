@@ -31,6 +31,10 @@ const buyerSchema = new mongoose.Schema(
                 ref: 'Buying',
             },
         ],
+        isAdmin: {
+            type: Boolean,
+            default: false,
+        },
     },
     { timestamps: true }
 );

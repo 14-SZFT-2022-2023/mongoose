@@ -1,56 +1,7 @@
-<!DOCTYPE html>
-<html lang="hu">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="css/stilus.css" />
-        <style>
-            table {
-                margin: 50px auto;
-                width: 50%;
-            }
+<%- include('./layouts/header_2') %> 
 
-            th {
-                text-align: left;
-            }
+<%- include('./layouts/nav') %> 
 
-            td {
-                border: none;
-            }
-        </style>
-        <title>Vásárlók</title>
-    </head>
-    <body>
-        <div id="container">
-            <h1>Ez egy bevásárló oldal</h1>
-            <p>Minden, mi szem szájnak ingere!</p>
-        </div>
-        <nav>
-            <li>
-                <a href="/">Nyitó</a>
-            </li>
-            <li>
-                <a href="/buyer">Vásárló</a>
-            </li>
-            <li>
-                <a href="/buyers">Vásárlók</a>
-            </li>
-            <li>
-                <a href="/category">Kategória</a>
-            </li>
-            <li>
-                <a href="/categories" class="active">Kategóriák</a>
-            </li>
-            <li>
-                <a href="/item">Árucikk</a>
-            </li>
-            <li>
-                <a href="/items">Árucikkek</a>
-            </li>
-            <li>
-                <a href="/buying">Vásárlás</a>
-            </li>
-        </nav>
         <table>
             <tr>
                 <th>Kategória neve</th>
@@ -60,8 +11,8 @@
             <% categories.forEach(category => { %>
             <tr>
                 <td><%= category.nev %></td>
-                <td><input type="checkbox" name="torol" /></td>
-                <td><input type="checkbox" name="modosit" /></td>
+                <td><a href="/category/torol/<%= category._id %>">Töröl</a></td>
+                <td><a href="/category/modosit/<%= category._id %>">Módosít</a></td>
             </tr>
             <% }) %>
         </table>
