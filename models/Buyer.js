@@ -1,25 +1,38 @@
 const mongoose = require('mongoose');
 
 const buyerSchema = new mongoose.Schema(
-  {
-    buyerId: Number,
-    nev: {
-      type: String,
-      required: true,
-      unique: true,
+    {
+        nev: {
+            type: String,
+            required: [true, 'A név megadása kötelező'],
+            unique: true,
+        },
+        cim: {
+            varos: {
+                type: String,
+                required: [true, 'A város megadása kötelező'],
+            },
+            utca: {
+                type: String,
+                required: [true, 'Az utca megadása kötelező'],
+            },
+            hazszam: {
+                type: String,
+                required: [true, 'A házszám megadása kötelező'],
+            },
+            iranyitoszam: {
+                type: Number,
+                required: [true, 'Az irányítószám megadása kötelező'],
+            },
+        },
+        buying: [
+            {
+                type: mongoose.SchemaTypes.ObjectId,
+                ref: 'Buying',
+            },
+        ],
     },
-    cim: {
-      type: String,
-      required: true,
-    },
-    buying: [
-      {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Buying',
-      },
-    ],
-  },
-  { timestamps: true }
+    { timestamps: true }
 );
 
 module.exports = mongoose.model('Buyer', buyerSchema);

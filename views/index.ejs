@@ -1,16 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <a href="/buyer">Vásárló</a>
-    <a href="/buyers">Vásárlók</a>
-    <a href="/item">Árucikk</a>
-    <a href="/items">Árucikkek</a>
-    <a href="/buying">Vásárlás</a>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/stilus.css" />
+        <style>
+            #tartalom {
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+            }
+
+            #tartalom h1 {
+                margin-bottom: 40px;
+                margin-top: 40px;
+            }
+        </style>
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="container">
+            <h1>Ez egy bevásárló oldal</h1>
+            <p>Minden, mi szem szájnak ingere!</p>
+        </div>
+        <nav>
+            <li>
+                <a href="/" class="active">Nyitó</a>
+            </li>
+            <li>
+                <a href="/buyer">Vásárló</a>
+            </li>
+            <li>
+                <a href="/buyers">Vásárlók</a>
+            </li>
+            <li>
+                <a href="/category">Kategória</a>
+            </li>
+            <li>
+                <a href="/categories">Kategóriák</a>
+            </li>
+            <li>
+                <a href="/item">Árucikk</a>
+            </li>
+            <li>
+                <a href="/items">Árucikkek</a>
+            </li>
+            <li>
+                <a href="/buying">Vásárlás</a>
+            </li>
+        </nav>
+        <div id="tartalom">
+            <h1>Ez egy fiktív online bevásárló oldal!</h1>
+            <p>Csak gyakorlásra!</p>
+        </div>
+    </body>
 </html>

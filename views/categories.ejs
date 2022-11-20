@@ -4,7 +4,21 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="css/stilus.css" />
-        <title>Vásárlás</title>
+        <style>
+            table {
+                margin: 50px auto;
+                width: 50%;
+            }
+
+            th {
+                text-align: left;
+            }
+
+            td {
+                border: none;
+            }
+        </style>
+        <title>Vásárlók</title>
     </head>
     <body>
         <div id="container">
@@ -25,7 +39,7 @@
                 <a href="/category">Kategória</a>
             </li>
             <li>
-                <a href="/categories">Kategóriák</a>
+                <a href="/categories" class="active">Kategóriák</a>
             </li>
             <li>
                 <a href="/item">Árucikk</a>
@@ -34,30 +48,22 @@
                 <a href="/items">Árucikkek</a>
             </li>
             <li>
-                <a href="/buying" class="active">Vásárlás</a>
+                <a href="/buying">Vásárlás</a>
             </li>
         </nav>
-        <form action="/buying" method="post">
-            <table>
-                <% items.forEach(item => { %>
-                <tr>
-                    <td><%= item.nev %></td>
-                    <td><%= item.ar %></td>
-                    <td>
-                        <input
-                            type="number"
-                            name="darab"
-                            style="width: 30px"
-                            min="0"
-                        />
-                    </td>
-                    <td><input type="checkbox" name="<%= item.nev %> " /></td>
-                </tr>
-                <% }) %>
-                <tr>
-                    <td><button type="submit">Elküld</button></td>
-                </tr>
-            </table>
-        </form>
+        <table>
+            <tr>
+                <th>Kategória neve</th>
+                <th>Törlés</th>
+                <th>Módosítás</th>
+            </tr>
+            <% categories.forEach(category => { %>
+            <tr>
+                <td><%= category.nev %></td>
+                <td><input type="checkbox" name="torol" /></td>
+                <td><input type="checkbox" name="modosit" /></td>
+            </tr>
+            <% }) %>
+        </table>
     </body>
 </html>

@@ -4,7 +4,17 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="css/stilus.css" />
-        <title>Vásárlás</title>
+        <style>
+            table {
+                margin: 50px auto;
+                width: 20%;
+            }
+
+            td {
+                border: none;
+            }
+        </style>
+        <title>Document</title>
     </head>
     <body>
         <div id="container">
@@ -22,7 +32,7 @@
                 <a href="/buyers">Vásárlók</a>
             </li>
             <li>
-                <a href="/category">Kategória</a>
+                <a href="/category" class="active">Kategória</a>
             </li>
             <li>
                 <a href="/categories">Kategóriák</a>
@@ -34,28 +44,23 @@
                 <a href="/items">Árucikkek</a>
             </li>
             <li>
-                <a href="/buying" class="active">Vásárlás</a>
+                <a href="/buying">Vásárlás</a>
             </li>
         </nav>
-        <form action="/buying" method="post">
+        <form action="/category" method="post" autocomplete="off">
             <table>
-                <% items.forEach(item => { %>
                 <tr>
-                    <td><%= item.nev %></td>
-                    <td><%= item.ar %></td>
                     <td>
-                        <input
-                            type="number"
-                            name="darab"
-                            style="width: 30px"
-                            min="0"
-                        />
+                        <label for="nev">Név:</label>
                     </td>
-                    <td><input type="checkbox" name="<%= item.nev %> " /></td>
+                    <td>
+                        <input type="text" name="nev" id="nev" autofocus />
+                    </td>
                 </tr>
-                <% }) %>
                 <tr>
-                    <td><button type="submit">Elküld</button></td>
+                    <td>
+                        <button type="submit">Elküld</button>
+                    </td>
                 </tr>
             </table>
         </form>
